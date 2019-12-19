@@ -27,7 +27,7 @@ class Direct extends ServiceAbstract implements CitrixApiAware
    * Authentication URL
    * @var String
    */
-  private $authorizeUrl = 'https://api.getgo.com/oauth/access_token';
+  private $authorizeUrl = 'https://api.getgo.com/oauth/v2/token';
 
   /**
    * API key or Secret Key in Citrix's Developer Portal
@@ -81,12 +81,12 @@ class Direct extends ServiceAbstract implements CitrixApiAware
 
     $params = array(
       'grant_type' => 'password',
-      'user_id' => $username,
+      'username' => $username,
       'password' => $password,
       'client_id' => $this->getApiKey()
     );
 
-    $this->setHttpMethod('GET')
+    $this->setHttpMethod('POST')
       ->setUrl($this->authorizeUrl)
       ->setParams($params)
       ->sendRequest()

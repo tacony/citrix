@@ -75,7 +75,7 @@ abstract class ServiceAbstract
       $headers = array(
         'Content-Type: application/json',
         'Accept: application/json',
-        'Authorization: OAuth oauth_token=' . $oauthToken
+        'Authorization: Basic oauth_token=' . $oauthToken
       );
       curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     }
